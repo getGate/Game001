@@ -1,8 +1,9 @@
 
-add_executable(NKun NimotsuKun/main.cpp)
-
-add_executable(NKun2 NimotsuKun2/main.cpp)
-
-add_executable(NKunBit NimotsuKunBitOperation/main.cpp)
-
-add_executable(NKunRawMem NimotsuKunRawMemory/main.cpp)
+SET(TARGET_DIR ${CMAKE_CURRENT_SOURCE_DIR})
+SUBDIRLIST(TARGET_DIRS ${TARGET_DIR})
+foreach(dir ${TARGET_DIRS})
+    if(EXISTS "${TARGET_DIR}/${dir}/main.cpp")
+        message("find target " ${dir})
+        add_executable(${dir} ${dir}/main.cpp)
+    endif(EXISTS "${TARGET_DIR}/${dir}/main.cpp")
+endforeach()

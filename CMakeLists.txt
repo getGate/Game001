@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 3.0.0)
 project(Game001 VERSION 0.1.0)
 
+include(cmake/utils.cmake)
+
 enable_language(C CXX)
 
 set(CMAKE_VERBOSE_MAKEFILE ON)
