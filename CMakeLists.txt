@@ -1,0 +1,13 @@
+cmake_minimum_required(VERSION 3.0.0)
+project(Game001 VERSION 0.1.0)
+
+enable_language(C CXX)
+
+set(CMAKE_VERBOSE_MAKEFILE ON)
+set(CMAKE_C_STANDARD 99)
+set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_POSITION_INDEPENDENT_CODE ON)
+
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/bin)
+
+add_subdirectory(01_FirstGame)
