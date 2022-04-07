@@ -35,7 +35,7 @@ MACRO(ADDGAMEDIR TARGET_DIR GAMES)
 
     foreach(theGame ${GAMES})
         if(EXISTS "${TARGET_DIR}/${theGame}/main.cpp")
-            message(STATUS "game: " ${theGame})
+            message("game: " ${theGame})
             add_executable(${theGame} ${theGame}/main.cpp)
 
             set(theBinDir "${GAME_BIN_DIR}/${theGame}")
@@ -51,7 +51,7 @@ MACRO(ADDGAMEDIR TARGET_DIR GAMES)
             if(EXISTS "${theDataSrc}")
             add_custom_command(TARGET ${theGame}
                 POST_BUILD
-                COMMAND ${CMAKE_COMMAND} -E copy ${theDataSrc} ${theBinDir}
+                COMMAND ${CMAKE_COMMAND} -E copy_directory ${theDataSrc} "${theBinDir}/data"
                 DEPENDS ${theDataSrc}
             )
             endif(EXISTS "${theDataSrc}")

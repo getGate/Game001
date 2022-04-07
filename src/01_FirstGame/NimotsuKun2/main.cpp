@@ -58,7 +58,7 @@ private:
 };
 
 int main( int argc, char** argv ){
-	const char* filename = "stageData.txt";
+	const char* filename = "data/stageData.txt";
 	if ( argc >= 2 ){
 		filename = argv[ 1 ];
 	}
