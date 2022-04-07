@@ -13,8 +13,8 @@ float3 gLightColor3 : register( c18 );
 
 struct ToPixel{
 	float4 screenPosition : POSITION;
-	float4 color : COLOR0; //’¸“_ƒJƒ‰[
-	float2 texCoord : TEXCOORD0; //ƒeƒNƒXƒ`ƒƒÀ•W
+	float4 color : COLOR0; //é ‚ç‚¹ã‚«ãƒ©ãƒ¼
+	float2 texCoord : TEXCOORD0; //ãƒ†ã‚¯ã‚¹ãƒãƒ£åº§æ¨™
 };
 
 ToPixel main( 
@@ -27,11 +27,11 @@ float2 aTexCoord : TEXCOORD0 ){
 	o.screenPosition.y = dot( gTransform[ 1 ], aPosition );
 	o.screenPosition.z = dot( gTransform[ 2 ], aPosition );
 	o.screenPosition.w = dot( gTransform[ 3 ], aPosition );
-	float3 wp; //ƒ[ƒ‹ƒhˆÊ’u
+	float3 wp; //ãƒ¯ãƒ¼ãƒ«ãƒ‰ä½ç½®
 	wp.x = dot( gWorldMatrix[ 0 ], aPosition );
 	wp.y = dot( gWorldMatrix[ 1 ], aPosition );
 	wp.z = dot( gWorldMatrix[ 2 ], aPosition );
-	float3 wn; //ƒ[ƒ‹ƒh–@ü
+	float3 wn; //ãƒ¯ãƒ¼ãƒ«ãƒ‰æ³•ç·š
 	wn.x = dot( gInvTransposedWorldMatrix[ 0 ].xyz, aNormal );
 	wn.y = dot( gInvTransposedWorldMatrix[ 1 ].xyz, aNormal );
 	wn.z = dot( gInvTransposedWorldMatrix[ 2 ].xyz, aNormal );
@@ -47,20 +47,20 @@ float2 aTexCoord : TEXCOORD0 ){
 	lvL = lvX * lvX;
 	lvL += lvY * lvY;
 	lvL += lvZ * lvZ;
-	lvL += 0.00001; //0Š„‚è–h~
+	lvL += 0.00001; //0å‰²ã‚Šé˜²æ­¢
 	float4 d = lvX * wn.xxxx;
 	d += lvY * wn.yyyy;
 	d += lvZ * wn.zzzz;
 	d /= lvL;
-	d = max( ( float4 )0, d ); //ƒ}ƒCƒiƒX‚Í0B
+	d = max( ( float4 )0, d ); //ãƒã‚¤ãƒŠã‚¹ã¯0ã€‚
 	float3 c;
 	c = gAmbient.xyz;
 	c += gLightColor0 * d.x;
 	c += gLightColor1 * d.y;
 	c += gLightColor2 * d.z;
 	c += gLightColor3 * d.w;
-	o.color.xyz = c * aColor.zyx * gDiffuseColor.xyz; //RGB“ü‚ê‘Ö‚¦
-	o.color.w = aColor.w * gDiffuseColor.w; //’¸“_ƒAƒ‹ƒtƒ@‚àæZ
+	o.color.xyz = c * aColor.zyx * gDiffuseColor.xyz; //RGBå…¥ã‚Œæ›¿ãˆ
+	o.color.w = aColor.w * gDiffuseColor.w; //é ‚ç‚¹ã‚¢ãƒ«ãƒ•ã‚¡ã‚‚ä¹—ç®—
 	o.texCoord = aTexCoord;
 	return o;
 }

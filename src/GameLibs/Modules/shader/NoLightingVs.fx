@@ -3,8 +3,8 @@ float4 gDiffuseColor : register( c10 );
 
 struct ToPixel{
 	float4 screenPosition : POSITION;
-	float4 color : COLOR0; //’¸“_ƒJƒ‰[
-	float2 texCoord : TEXCOORD0; //ƒeƒNƒXƒ`ƒƒÀ•W
+	float4 color : COLOR0; //é ‚ç‚¹ã‚«ãƒ©ãƒ¼
+	float2 texCoord : TEXCOORD0; //ãƒ†ã‚¯ã‚¹ãƒãƒ£åº§æ¨™
 };
 
 ToPixel main( 
@@ -19,7 +19,7 @@ float2 aTexCoord : TEXCOORD0 ){
 #ifdef LINEAR_ZBUFFER
 	o.screenPosition.z *= o.screenPosition.w;
 #endif
-	o.color.xyzw = aColor.zyxw * gDiffuseColor; //BGRA‚Å—ˆ‚é‚Ì‚Å‡”Ô•ÏX
+	o.color.xyzw = aColor.zyxw * gDiffuseColor; //BGRAã§æ¥ã‚‹ã®ã§é †ç•ªå¤‰æ›´
 	o.texCoord = aTexCoord;
 	return o;
 }

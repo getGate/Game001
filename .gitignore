@@ -442,3 +442,6 @@ bin/
 .vscode/
 *.vcxproj
 *.sln
+
+*.ma
+*.mabk

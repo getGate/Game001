@@ -1,4 +1,4 @@
-//ƒsƒNƒZƒ‹‚Éî•ñ‚ğ‚¨‚­‚é‚¾‚¯‚ÌƒVƒF[ƒ_
+//ãƒ”ã‚¯ã‚»ãƒ«ã«æƒ…å ±ã‚’ãŠãã‚‹ã ã‘ã®ã‚·ã‚§ãƒ¼ãƒ€
 float4 gTransform[ 4 ] : register( c0 );
 float4 gWorldMatrix[ 3 ] : register( c4 );
 float4 gInvTransposedWorldMatrix[ 3 ] : register( c7 );
@@ -6,10 +6,10 @@ float4 gDiffuseColor : register( c10 );
 
 struct ToPixel{
 	float4 screenPosition : POSITION;
-	float4 color : COLOR0; //’¸“_ƒJƒ‰[
-	float2 texCoord : TEXCOORD0; //ƒeƒNƒXƒ`ƒƒÀ•W
-	float3 position : TEXCOORD1; //ƒ[ƒJƒ‹À•WˆÊ’u
-	float3 normal : TEXCOORD2; //ƒ[ƒJƒ‹À•W–@ü
+	float4 color : COLOR0; //é ‚ç‚¹ã‚«ãƒ©ãƒ¼
+	float2 texCoord : TEXCOORD0; //ãƒ†ã‚¯ã‚¹ãƒãƒ£åº§æ¨™
+	float3 position : TEXCOORD1; //ãƒ­ãƒ¼ã‚«ãƒ«åº§æ¨™ä½ç½®
+	float3 normal : TEXCOORD2; //ãƒ­ãƒ¼ã‚«ãƒ«åº§æ¨™æ³•ç·š
 };
 
 ToPixel main( 
@@ -22,11 +22,11 @@ float2 aTexCoord : TEXCOORD0 ){
 	o.screenPosition.y = dot( gTransform[ 1 ], aPosition );
 	o.screenPosition.z = dot( gTransform[ 2 ], aPosition );
 	o.screenPosition.w = dot( gTransform[ 3 ], aPosition );
-	float3 wp; //ƒ[ƒ‹ƒhˆÊ’u
+	float3 wp; //ãƒ¯ãƒ¼ãƒ«ãƒ‰ä½ç½®
 	wp.x = dot( gWorldMatrix[ 0 ], aPosition );
 	wp.y = dot( gWorldMatrix[ 1 ], aPosition );
 	wp.z = dot( gWorldMatrix[ 2 ], aPosition );
-	float3 wn; //ƒ[ƒ‹ƒh–@ü
+	float3 wn; //ãƒ¯ãƒ¼ãƒ«ãƒ‰æ³•ç·š
 	wn.x = dot( gInvTransposedWorldMatrix[ 0 ].xyz, aNormal );
 	wn.y = dot( gInvTransposedWorldMatrix[ 1 ].xyz, aNormal );
 	wn.z = dot( gInvTransposedWorldMatrix[ 2 ].xyz, aNormal );
